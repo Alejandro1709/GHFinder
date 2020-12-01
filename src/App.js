@@ -3,17 +3,12 @@ import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import axios from 'axios';
 import Search from './components/users/Search';
-import PropTypes from 'prop-types';
 import './App.css';
 
 class App extends Component {
   state = {
     users: [],
     loading: false,
-  };
-
-  static propTypes = {
-    searchUsers: PropTypes.func.isRequired,
   };
 
   searchUsers = async (text) => {
@@ -25,6 +20,10 @@ class App extends Component {
     this.setState({ users: res.data.items, loading: false });
   };
 
+  clearUsers = () => {
+    this.setState({ users: [], loading: false });
+  };
+
   render() {
     const { users, loading } = this.state;
 
@@ -32,7 +31,11 @@ class App extends Component {
       <div className="app">
         <Navbar />
         <div className="container">
-          <Search searchUsers={this.searchUsers} />
+          <Search
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers}
+            showClear={this.state.users.length > 0 ? true : false}
+          />
           <Users loading={loading} users={users} />
         </div>
       </div>
