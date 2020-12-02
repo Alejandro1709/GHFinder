@@ -39,11 +39,6 @@ const App = () => {
     setLoading(false);
   };
 
-  const clearUsers = () => {
-    setUsers([]);
-    setLoading(false);
-  };
-
   const showAlert = (msg, type) => {
     this.setState({ alert: { msg, type } });
     setAlert({ msg, type });
@@ -57,18 +52,14 @@ const App = () => {
         <div className="app">
           <Navbar />
           <div className="container">
-            <Alert alert={alert.alert} />
+            <Alert alert={alert} />
             <Switch>
               <Route
                 exact
                 path="/"
                 render={(props) => (
                   <Fragment>
-                    <Search
-                      clearUsers={clearUsers}
-                      showClear={users.length > 0 ? true : false}
-                      setAlert={showAlert}
-                    />
+                    <Search setAlert={showAlert} />
                     <Users />
                   </Fragment>
                 )}
