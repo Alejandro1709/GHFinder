@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
+import Search from '../users/Users';
+import Users from '../users/Search';
 
-class Home extends Component {
-  render() {
-    return <div></div>;
-  }
-}
+const Home = () => {
+  return (
+    <Fragment>
+      <Search />
+      <Users />
+    </Fragment>
+  );
+};
 
 export default Home;
