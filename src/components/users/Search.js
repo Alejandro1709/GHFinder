@@ -37,10 +37,10 @@ const Search = ({ setAlert }) => {
           className="btn btn-dark btn-block"
         />
       </form>
-      {GithubContext.users.length > 0 && (
+      {githubContext.users.length > 0 && (
         <button
           className="btn btn-light btn-block"
-          onClick={GithubContext.clearUsers}
+          onClick={githubContext.clearUsers}
         >
           Clear
         </button>
